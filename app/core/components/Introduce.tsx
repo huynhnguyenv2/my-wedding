@@ -1,7 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
-import dayjs from "dayjs"
 
 export default function Introduce() {
   const [state, setState] = useState({
@@ -10,13 +9,16 @@ export default function Introduce() {
   })
 
   useEffect(() => {
-    dayjs.extend(require("dayjs/plugin/relativeTime"))
-    const wifeDate = "12-22-2024"
-    const now = dayjs()
-    const eventDate = dayjs(wifeDate, "DD/MM/YYYY")
-    const event = dayjs(eventDate)
-    const diff = event.diff(now, "day")
-    const wifeDateText = dayjs(wifeDate).format("MMMM D, YYYY")
+    const wifeDate = new Date("2024-12-22")
+    const now = new Date()
+    const diff = Math.ceil(
+      (wifeDate.getTime() - now.getTime()) / (1000 * 3600 * 24)
+    )
+    const wifeDateText = wifeDate.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    })
     setState({ daysToEvent: diff, wifeDateText })
   }, [])
 
