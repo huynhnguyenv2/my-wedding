@@ -14,11 +14,11 @@ function Footer() {
     <footer className="flex justify-center items-center bg-[#f5f5f5] p-4 text-center">
       <p>
         Made with lots of <span>❤️</span> by{" "}
-        <a href="https://facebook.com">
+        <a href="mailto:hoangphamkhanh97@gmail.com">
           <b>chong be Nguyen</b>
         </a>
         .<br className="sm:hidden" /> Don&apos;t forget to{" "}
-        <a href="https://github.com">
+        <a href="https://github.com/huynhnguyenv2">
           <b>rsvp</b>!
         </a>
       </p>
