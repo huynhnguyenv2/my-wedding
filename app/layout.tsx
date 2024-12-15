@@ -28,6 +28,7 @@ export default function RootLayout({
         <link rel="icon" href="static/favicon.ico" />
         <meta property="og:title" content={String(metadata.title) || ""} />
         <meta property="og:description" content={metadata.description || ""} />
+
         <meta
           property="og:url"
           content="https://my-wedding-gfz1.onrender.com/"
@@ -40,7 +41,7 @@ export default function RootLayout({
         />
         <meta
           property="og:image"
-          content="https://opengraph.b-cdn.net/production/images/81d6adc6-b84f-42e1-b9f0-d361d1c6750b.png?token=qVKVBdd6qWIIveWQfYtwCcQuhCxPhx0pn_D3X2alFk4&height=1799&width=1200&expires=33270247764"
+          content="https://my-wedding-gfz1.onrender.com/images/12_edit.JPG"
         />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -59,7 +60,7 @@ export default function RootLayout({
         />
         <meta
           name="twitter:image"
-          content="https://opengraph.b-cdn.net/production/images/81d6adc6-b84f-42e1-b9f0-d361d1c6750b.png?token=qVKVBdd6qWIIveWQfYtwCcQuhCxPhx0pn_D3X2alFk4&height=1799&width=1200&expires=33270247764"
+          content="https://my-wedding-gfz1.onrender.com/images/12_edit.JPG"
         />
       </head>
       <body
