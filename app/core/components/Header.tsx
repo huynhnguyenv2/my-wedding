@@ -3,8 +3,8 @@ import Image from "next/image"
 export default function Header() {
   return (
     <div className="flex flex-col justify-center items-center p-4">
-      <h1 className="font-whisper text-[60px]">
-        <Link href="/home">Hoang & Nguyen</Link>
+      <h1 className="font-whisper text-[40px] sm:text-[60px] text-red-900">
+        <Link href="/home">Hoàng & Nguyên</Link>
       </h1>
       <div className="flex gap-4 items-center">
         <div className="">
@@ -13,7 +13,7 @@ export default function Header() {
             width={40}
             height={40}
             alt="An image"
-            className="rounded-full"
+            className="rounded-full text-red-900"
           />
         </div>
         <span className="text-2xl">&hearts;</span>
@@ -23,7 +23,7 @@ export default function Header() {
             width={40}
             height={40}
             alt="An image"
-            className="rounded-full"
+            className="rounded-full text-red-900"
           />
         </div>
       </div>

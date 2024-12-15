@@ -1,4 +1,4 @@
-import firebaseConfig from 'utils/firebases/config'
+import firebaseConfig from "./config"
 import {
   getFirestore,
   collection,
@@ -14,36 +14,19 @@ import {
   increment,
   DocumentData,
   DocumentReference,
-} from 'firebase/firestore'
-import { PAGE_SIZE } from 'configs/data'
-import { INewMessage } from 'containers/Chat/type'
+} from "firebase/firestore"
+
+interface INewMessage {
+  name: string
+  message: string
+}
+
+const PAGE_SIZE = 10
 interface ChatServiceType {
-  createMessage: (channelId: string, message: INewMessage) => void
+  createMessage: (message: INewMessage) => void
   getMessages: (
-    channelId: string | null,
-    lastMsgIndex: number | null,
+    lastMsgIndex: number | null
   ) => { messagesQuery: any; onSnapshot: any } | {}
-  listenChannel: (channelId: string) =>
-    | {
-        channelRef: DocumentReference<DocumentData, DocumentData> | undefined
-        onSnapshot: any
-      }
-    | {}
-  listenUserChat: (
-    channelId: string,
-    userId: string,
-  ) =>
-    | {
-        userChatRef: DocumentReference<DocumentData, DocumentData> | undefined
-        onSnapshot: any
-      }
-    | {}
-  updateTypingMessage: (
-    channelId: string,
-    userId: string,
-    isTyping: boolean,
-  ) => void
-  updateTimeActivity: (channelId: string, userId: string) => void
 }
 
 class ChatService implements ChatServiceType {
@@ -51,8 +34,12 @@ class ChatService implements ChatServiceType {
   static instance: ChatService | null = null
 
   constructor() {
-    if (!firebaseConfig.firebaseApp) return
-    this.db = getFirestore(firebaseConfig.firebaseApp)
+    try {
+      if (!firebaseConfig.firebaseApp) return
+      this.db = getFirestore(firebaseConfig.firebaseApp)
+    } catch (e) {
+      console.error("Error initializing ChatService", e)
+    }
 
     if (ChatService.instance) {
       return ChatService.instance
@@ -60,11 +47,9 @@ class ChatService implements ChatServiceType {
     ChatService.instance = this
   }
 
-  createMessage(channelId: string, message: INewMessage) {
+  createMessage(message: INewMessage) {
     if (this.db === undefined) return
-    const messagesDoc = doc(
-      collection(this.db, 'channelMessages', channelId, 'messages'),
-    )
+    const messagesDoc = doc(collection(this.db, "messages"))
 
     setDoc(messagesDoc, {
       ...message,
@@ -73,92 +58,20 @@ class ChatService implements ChatServiceType {
     })
   }
 
-  getMessages(channelId: string | null, lastMsgIndex: number | null) {
+  getMessages(lastMsgIndex: number | null) {
     if (this.db === undefined) return {}
-    if (!channelId) return {}
-    const messagesDoc = collection(
-      this.db,
-      'channelMessages',
-      channelId,
-      'messages',
-    )
+    const messagesDoc = collection(this.db, "messages")
 
     const messagesQuery = lastMsgIndex
       ? query(
           messagesDoc,
-          orderBy('msgIndex', 'desc'),
+          orderBy("createdAt", "desc"),
           startAfter(lastMsgIndex),
-          limit(PAGE_SIZE),
+          limit(PAGE_SIZE)
         )
-      : query(messagesDoc, orderBy('msgIndex', 'desc'), limit(PAGE_SIZE))
+      : query(messagesDoc, orderBy("createdAt", "desc"), limit(PAGE_SIZE))
 
     return { messagesQuery, onSnapshot }
-  }
-
-  updateTypingMessage(channelId: string, userId: string, isTyping: boolean) {
-    if (this.db === undefined) return
-
-    const channelRef = doc(this.db, 'channelMessages', channelId)
-
-    getDoc(channelRef).then((docSnap) => {
-      if (docSnap.exists()) {
-        updateDoc(channelRef, {
-          actions: {
-            ...docSnap.data().actions,
-            typings: {
-              ...docSnap.data().actions?.typings,
-              [userId]: isTyping ? new Date().getTime() : null,
-            },
-          },
-        })
-      }
-    })
-  }
-
-  updateTimeActivity(channelId: string, userId: string) {
-    if (this.db === undefined) return
-    if (!userId) return
-    if (!channelId) return
-
-    const userChatDoc = doc(this.db, 'userChats', channelId, 'users', userId)
-    setDoc(userChatDoc, {
-      lastActivity: new Date().getTime(),
-    })
-  }
-
-  updateLastReadIndex(channelId: string, userId: string, msgIndex: number) {
-    if (this.db === undefined) return
-    if (!userId) return
-    if (!channelId) return
-
-    const userChatDoc = doc(this.db, 'userChats', channelId, 'users', userId)
-    setDoc(userChatDoc, {
-      lastReadIndex: msgIndex,
-    })
-  }
-
-  listenChannel(channelId: string | null) {
-    if (this.db === undefined) return {}
-    if (!channelId) return {}
-    const channelRef = doc(this.db, 'channelMessages', channelId)
-
-    return {
-      channelRef,
-      onSnapshot,
-    }
-  }
-
-  listenUserChat(channelId: string, userId: string) {
-    if (this.db === undefined) return {}
-    if (!userId) return {}
-    if (!channelId) return {}
-
-    const userChatRef = doc(this.db, 'userChats', channelId, 'users', userId)
-
-    return {
-      userChatRef,
-      onSnapshot,
-    }
   }
 }
 

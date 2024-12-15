@@ -1,32 +1,40 @@
 import Image from "next/image"
-
-function getDaysToEvent() {
-  const daysToEvent = new Date("2025-1-5").getTime() - new Date().getTime()
-  return Math.ceil(daysToEvent / (1000 * 60 * 60 * 24))
-}
+import dayjs from "dayjs"
 
 export default function Introduce() {
+  const wifeDate = "12-22-2024"
+  function getDaysToEvent() {
+    const now = dayjs()
+    const eventDate = dayjs(wifeDate, "DD/MM/YYYY")
+    const event = dayjs(eventDate)
+    const diff = event.diff(now, "day")
+    return diff
+  }
+
   const daysToEvent = getDaysToEvent()
 
+  const wifeDateText = dayjs(wifeDate).format("MMMM D, YYYY")
   return (
-    <section className="flex justify-center relative h-screen">
+    <section className="flex justify-center relative h-[100vh]">
       <Image
-        src="/images/NTR_0044.JPG"
+        src="/images/12.JPG"
         layout="fill"
         objectFit="cover"
         alt="An image"
-        className="absolute z-0"
+        fill
+        style={{ objectFit: "cover" }}
+        className="absolute z-0  "
+        loading="eager"
       />
 
-      <div className="flex flex-col justify-center text-center z-10 font-bold text-white opacity-80">
-        <h1 className="text-4xl mb-2 ">{daysToEvent} DAYS TO THE EVENT</h1>
-        <h2 className="font-whisper text-[92px] mb-2">We're getting married</h2>
-        <p className="text-3xl mb-2">January 5th, 2025</p>
-        <div>
-          <button className="bg-black text-3xl text-main px-8 py-3 rounded-full mt-4">
-            RSVP
-          </button>
-        </div>
+      <div className="flex flex-col justify-end text-center z-10 font-bold text-red-900 opacity-90 mb-20">
+        <h1 className="text-3xl sm:text-4xl mb-2 ">
+          {daysToEvent} DAYS TO THE EVENT
+        </h1>
+        <h2 className="font-whisper text-[42px] sm:text-[92px] mb-2">
+          We&apos;re getting married
+        </h2>
+        <p className="text-2xl text-3xl mb-2">{wifeDateText}</p>
       </div>
     </section>
   )

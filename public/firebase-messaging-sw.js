@@ -4,17 +4,6 @@
 importScripts("https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js")
 importScripts("https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js")
 
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyCRwcC5_E3jHrYZQZz3i7LtjpH4H04XYMA',
-//   authDomain: 'koomimarket-procure.firebaseapp.com',
-//   databaseURL:
-//     'https://koomimarket-procure-default-rtdb.asia-southeast1.firebasedatabase.app',
-//   projectId: 'koomimarket-procure',
-//   storageBucket: 'koomimarket-procure.appspot.com',
-//   messagingSenderId: '805147007611',
-//   appId: '1:805147007611:web:f748f38dbccf65ece720de',
-//   measurementId: 'G-6S7KD45D7B',
-// }
 const firebaseConfig = {
   apiKey: "AIzaSyDnqBk4dWnvOfGepxNt_DhW3ykItVJKd_A",
   authDomain: "my-wedding-app-5effc.firebaseapp.com",
@@ -43,23 +32,23 @@ messaging.onBackgroundMessage((payload) => {
   self.registration.showNotification(notificationTitle, notificationOptions)
 })
 
-self.addEventListener("notificationclick", (event) => {
-  console.log("Click:", event)
-  event.notification.close()
-
-  event.waitUntil(
-    clients
-      .matchAll({ type: "window" })
-      .then((clientList) => {
-        console.log("what is client list", clientList)
-        for (const client of clientList) {
-          if (client.url === "/" && "focus" in client) return client.focus()
-        }
-        if (clients.openWindow && Boolean(event.notification.data.link_url))
-          return clients.openWindow(event.notification.data.link_url)
-      })
-      .catch((err) => {
-        console.log("There was an error waitUntil:", err)
-      })
-  )
-})
+if (typeof self !== "undefined") {
+  self.addEventListener("notificationclick", (event) => {
+    event.notification.close()
+    event.waitUntil(
+      clients
+        .matchAll({ type: "window" })
+        .then((clientList) => {
+          console.log("what is client list", clientList)
+          for (const client of clientList) {
+            if (client.url === "/" && "focus" in client) return client.focus()
+          }
+          if (clients.openWindow && Boolean(event.notification.data.link_url))
+            return clients.openWindow(event.notification.data.link_url)
+        })
+        .catch((err) => {
+          console.log("There was an error waitUntil:", err)
+        })
+    )
+  })
+}

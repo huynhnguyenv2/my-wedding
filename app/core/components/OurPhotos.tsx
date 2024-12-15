@@ -2,27 +2,21 @@
 import Image from "next/image"
 import React, { useState } from "react"
 import Modal from "react-modal"
+import useResizeListener from "../../hooks/useResizeListener"
 
 const FILENAMES = [
-  "NTR_0044.JPG",
-  "NTR_0085.JPG",
-  "NTR_0087.JPG",
-  "NTR_0122.JPG",
-  "NTR_0140.JPG",
-  "NTR_0155.JPG",
-  "NTR_0193.JPG",
-  "NTR_0226.JPG",
-  // "NTR_0266.JPG",
-  // "NTR_0289.JPG",
-  // "NTR_0295.JPG",
-  // "NTR_0306.JPG",
-  // "NTR_0320.JPG",
-  // "NTR_0325.JPG",
-  // "NTR_0330.JPG",
-  // "NTR_0336.JPG",
-  // "NTR_0343.JPG",
-  // "NTR_8999.JPG",
-  // "NTR_9003.JPG",
+  "1.JPG",
+  "2.JPG",
+  "3.JPG",
+  "4.jpg",
+  "5.JPG",
+  "6.JPG",
+  "7.JPG",
+  "8.jpg",
+  "9.JPG",
+  "10.jpg",
+  "11.JPG",
+  "12.JPG",
 ]
 
 const customStyles = {
@@ -33,8 +27,10 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "80%",
-    height: "80%",
+    padding: 0,
+    border: "none",
+    width: "90%",
+    height: "90%",
     zIndex: 1000,
   },
 }
@@ -61,13 +57,15 @@ function ImageZoomModal({
       ariaHideApp={false}
     >
       {openSrc && (
-        <Image
-          src={openSrc}
-          alt={alt}
-          layout="fill"
-          loading="lazy"
-          className="w-full h-full object-cover"
-        />
+        <div className="relative h-full">
+          <Image
+            src={openSrc}
+            alt={alt}
+            layout="fill"
+            loading="eager"
+            className="object-cover w-full h-full"
+          />
+        </div>
       )}
 
       <button
@@ -95,27 +93,95 @@ function ImageZoomModal({
 }
 export default function OurPhotos() {
   const [openSrc, setOpenSrc] = useState<string | null>(null)
-  const urls = FILENAMES.map((file: string) => `/images/${file}`)
+  const urls = FILENAMES.map((filename) => `/images/${filename}`)
+
+  const { mobileView } = useResizeListener({})
+
   return (
     <section className="py-8">
       <div className="z-10">
-        <h1 className="text-3xl">Our Photos</h1>
-        <div className="grid grid-cols-4 mt-4 ">
-          {urls.map((url: string, index: number) => (
-            <div
-              key={index}
-              className="relative flex justify-center items-center cursor-pointer"
-              onClick={() => setOpenSrc(url)}
-            >
-              <Image
-                src={url}
-                width={200}
-                height={200}
-                alt="An image"
-                className=" w-full h-80 object-cover"
-              />
-            </div>
-          ))}
+        <h1 className="text-3xl">Những bức hình xinh xẻo</h1>
+        <div className=" px-4 sm:px-0">
+          <div className="grid grid-cols-3 sm:grid-cols-4 mt-4 gap-4">
+            {urls
+              .slice(0, mobileView ? 3 : 4)
+              .map((url: string, index: number) => (
+                <div
+                  key={index}
+                  className="relative flex justify-center items-center cursor-pointer col-span-1"
+                  onClick={() => setOpenSrc(url)}
+                >
+                  <Image
+                    src={url}
+                    width={200}
+                    height={200}
+                    alt="An image"
+                    className=" w-full h-80 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 mt-4 gap-4">
+            {urls
+              .slice(mobileView ? 3 : 4, mobileView ? 5 : 7)
+              .map((url: string, index: number) => (
+                <div
+                  key={index}
+                  className="relative flex justify-center items-center cursor-pointer col-span-1"
+                  onClick={() => setOpenSrc(url)}
+                >
+                  <Image
+                    src={url}
+                    width={200}
+                    height={200}
+                    alt="An image"
+                    className=" w-full h-80 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+          </div>
+          <div className="grid grid-cols-3 sm:grid-cols-4 mt-4 gap-4">
+            {urls
+              .slice(mobileView ? 5 : 7, mobileView ? 8 : 11)
+              .map((url: string, index: number) => (
+                <div
+                  key={index}
+                  className="relative flex justify-center items-center cursor-pointer col-span-1"
+                  onClick={() => setOpenSrc(url)}
+                >
+                  <Image
+                    src={url}
+                    width={200}
+                    height={200}
+                    alt="An image"
+                    className=" w-full h-80 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+          </div>
+          {/* <div className="grid grid-cols-2 sm:grid-cols-3 mt-4 gap-4">
+            {urls
+              .slice(mobileView ? 3 : 4, mobileView ? 5 : 7)
+              .map((url: string, index: number) => (
+                <div
+                  key={index}
+                  className="relative flex justify-center items-center cursor-pointer col-span-1"
+                  onClick={() => setOpenSrc(url)}
+                >
+                  <Image
+                    src={url}
+                    width={200}
+                    height={200}
+                    alt="An image"
+                    className=" w-full h-80 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+          </div> */}
         </div>
       </div>
       <div className="z-90">

@@ -1,16 +1,15 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app'
-import { getMessaging, getToken, onMessage } from 'firebase/messaging'
+import { initializeApp } from "firebase/app"
+import { getMessaging, getToken, onMessage } from "firebase/messaging"
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyDnqBk4dWnvOfGepxNt_DhW3ykItVJKd_A",
+  authDomain: "my-wedding-app-5effc.firebaseapp.com",
+  projectId: "my-wedding-app-5effc",
+  storageBucket: "my-wedding-app-5effc.firebasestorage.app",
+  messagingSenderId: "181559480291",
+  appId: "1:181559480291:web:2b4826b1c979fef09d5ad6",
+  measurementId: "G-VKZ5QBQ960",
 }
 
 interface FirebaseConfigType {
@@ -28,7 +27,7 @@ class FirebaseConfig implements FirebaseConfigType {
   static instance: FirebaseConfig | null = null
 
   constructor() {
-    if (typeof navigator === 'undefined') return
+    if (typeof navigator === "undefined") return
     if (FirebaseConfig.instance) {
       return FirebaseConfig.instance
     }
@@ -40,11 +39,11 @@ class FirebaseConfig implements FirebaseConfigType {
     this.firebaseApp = initializeApp(firebaseConfig)
     this.messaging = getMessaging(this.firebaseApp)
     this.vapidKey =
-      'BI34EZKmrD_2otEKCSVGfht3ewebzO9RPtXu14ltwqLLnDFIHBmoDo5VpSIkLeKCE7qWpnGHcUKttRwlZdxMApI'
+      "BB1YxHDPPHtQSEuC9Ij21jNBx7Hvy5VK9jnahchn1npvFzN-JKQAcqikGdoymPHEcJPUUl5ZPtYkLLC_jDp6tlQ"
   }
 
   fetching = 0
-  currentToken = ''
+  currentToken = ""
   createdAt = new Date().getTime()
 
   fetchToken = async (cb: (token: string | null) => void) => {
@@ -63,12 +62,12 @@ class FirebaseConfig implements FirebaseConfigType {
         cb(this.currentToken)
       } else {
         console.log(
-          'No registration token available. Request permission to generate one.',
+          "No registration token available. Request permission to generate one."
         )
         cb(null)
       }
     } catch (err) {
-      console.log('An error occurred while retrieving token. ', err)
+      console.log("An error occurred while retrieving token. ", err)
     }
   }
 
