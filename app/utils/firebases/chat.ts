@@ -75,4 +75,4 @@ class ChatService implements ChatServiceType {
   }
 }
 
-export default new ChatService()
+export default ChatService

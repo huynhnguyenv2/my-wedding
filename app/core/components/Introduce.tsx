@@ -29,7 +29,9 @@ export default function Introduce() {
 
       <div className="flex flex-col justify-end text-center z-10 font-bold text-red-900 opacity-90 mb-20">
         <h1 className="text-3xl sm:text-4xl mb-2 ">
-          {daysToEvent} DAYS TO THE EVENT
+          {daysToEvent > 0
+            ? `${daysToEvent} DAYS TO THE EVENT`
+            : "THE DAY HAS COME"}
         </h1>
         <h2 className="font-whisper text-[42px] sm:text-[92px] mb-2">
           We&apos;re getting married

@@ -1,10 +1,17 @@
 "use client"
-import React, { useState, useReducer, useEffect } from "react"
+import React, { useState, useReducer, useEffect, useRef } from "react"
 import Dropzone from "react-dropzone"
 import dayjs from "dayjs"
-import chatService from "../../utils/firebases/chat"
+import ChatService from "../../utils/firebases/chat"
 import Heart from "@react-sandbox/heart"
 export default function Greetings() {
+  const chatServiceRef = useRef<ChatService>()
+
+  useEffect(() => {
+    if (typeof window === "undefined" || chatServiceRef.current) return
+    chatServiceRef.current = new ChatService()
+  }, [])
+
   const [values, dispatch] = useReducer(
     (
       state: { name: string; messageContent: string },
@@ -33,8 +40,9 @@ export default function Greetings() {
     if (typeof window === "undefined") return
     const lastQueryIndex = 0
 
+    if (!chatServiceRef.current) return
     const { messagesQuery, onSnapshot } =
-      chatService.getMessages(lastQueryIndex)
+      chatServiceRef.current.getMessages(lastQueryIndex)
 
     const unsubscribe =
       typeof onSnapshot === "function" &&
@@ -55,7 +63,9 @@ export default function Greetings() {
   }, [])
 
   function handleSubmit() {
-    chatService.createMessage({ message: messageContent, name })
+    if (chatServiceRef.current) {
+      chatServiceRef.current.createMessage({ message: messageContent, name })
+    }
 
     setMessages([
       ...messages,
