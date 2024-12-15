@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
-import { getMessaging, getToken, onMessage } from "firebase/messaging"
+import { getToken, onMessage } from "firebase/messaging"
+import { getMessaging } from "firebase/messaging/sw"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDnqBk4dWnvOfGepxNt_DhW3ykItVJKd_A",
