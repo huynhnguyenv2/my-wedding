@@ -1,19 +1,26 @@
+"use client"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import dayjs from "dayjs"
 
 export default function Introduce() {
-  const wifeDate = "12-22-2024"
-  function getDaysToEvent() {
+  const [state, setState] = useState({
+    daysToEvent: 0,
+    wifeDateText: "",
+  })
+
+  useEffect(() => {
+    dayjs.extend(require("dayjs/plugin/relativeTime"))
+    const wifeDate = "12-22-2024"
     const now = dayjs()
     const eventDate = dayjs(wifeDate, "DD/MM/YYYY")
     const event = dayjs(eventDate)
     const diff = event.diff(now, "day")
-    return diff
-  }
+    const wifeDateText = dayjs(wifeDate).format("MMMM D, YYYY")
+    setState({ daysToEvent: diff, wifeDateText })
+  }, [])
 
-  const daysToEvent = getDaysToEvent()
-
-  const wifeDateText = dayjs(wifeDate).format("MMMM D, YYYY")
+  const { daysToEvent, wifeDateText } = state
   return (
     <section className="flex justify-center relative h-[100vh]">
       <Image
