@@ -37,6 +37,9 @@ export default function RootLayout({
           property="og:image"
           content="https://my-wedding-gfz1.onrender.com/images/12.JPG"
         />
+        <meta name="og:image:width" content="200" />
+        <meta name="og:image:height" content="300" />
+        <meta name="og:image:type" content="image/jpeg" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
