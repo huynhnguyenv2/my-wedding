@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useReducer, useEffect } from "react"
-// import Dropzone from "react-dropzone"
+import Dropzone from "react-dropzone"
 import dayjs from "dayjs"
-// import chatService from "../../utils/firebases/chat"
+import chatService from "../../utils/firebases/chat"
 import Heart from "@react-sandbox/heart"
 export default function Greetings() {
   const [values, dispatch] = useReducer(
@@ -29,47 +29,49 @@ export default function Greetings() {
   const { name, messageContent } = values
 
   const [messages, setMessages] = useState([] as any)
-  // useEffect(() => {
-  //   if (typeof window === "undefined") return
-  //   const lastQueryIndex = 0
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const lastQueryIndex = 0
 
-  //   const { messagesQuery, onSnapshot } =
-  //     chatService.getMessages(lastQueryIndex)
+    const { messagesQuery, onSnapshot } =
+      chatService.getMessages(lastQueryIndex)
 
-  //   const unsubscribe =
-  //     typeof onSnapshot === "function" &&
-  //     onSnapshot(messagesQuery, (snapshot: any) => {
-  //       const messages = snapshot.docs.map((doc: any) => ({
-  //         ...doc.data(),
-  //         messageUID: doc.id,
-  //       }))
+    const unsubscribe =
+      typeof onSnapshot === "function" &&
+      onSnapshot(messagesQuery, (snapshot: any) => {
+        const messages = snapshot.docs.map((doc: any) => ({
+          ...doc.data(),
+          messageUID: doc.id,
+        }))
 
-  //       if (messages.length === 0) return
+        if (messages.length === 0) return
 
-  //       setMessages(messages)
-  //     })
+        setMessages(messages)
+      })
 
-  //   return () => {
-  //     unsubscribe
-  //   }
-  // }, [])
+    return () => {
+      unsubscribe
+    }
+  }, [])
 
   function handleSubmit() {
-    // chatService.createMessage({ message: messageContent, name })
-    // setMessages([
-    //   ...messages,
-    //   {
-    //     name,
-    //     message: messageContent,
-    //     date: new Date().toISOString(),
-    //   },
-    // ])
-    // dispatch({ type: "RESET", payload: "" })
+    chatService.createMessage({ message: messageContent, name })
+
+    setMessages([
+      ...messages,
+      {
+        name,
+        message: messageContent,
+        date: new Date().toISOString(),
+      },
+    ])
+
+    dispatch({ type: "RESET", payload: "" })
   }
 
-  // function handleUpload(files: File[]) {
-  //   console.log(files)
-  // }
+  function handleUpload(files: File[]) {
+    console.log(files)
+  }
 
   return (
     <div className="py-8 px-4 sm:px-20 bg-gray-100 flex flex-col gap-4">
@@ -104,11 +106,11 @@ export default function Greetings() {
             }
           />
         </div>
-        {/* <div className="flex flex-col sm:flex-row items-start gap-2 font-bold hidden">
+        <div className="flex flex-col sm:flex-row items-start gap-2 font-bold hidden">
           <label htmlFor="message" className="w-40">
             Gửi ảnh kèm
           </label>
-
+          {/* <p className="w-full">Upload</p> */}
           <div className="w-full flex">
             <Dropzone onDrop={handleUpload}>
               {({ getRootProps, getInputProps }) => (
@@ -122,7 +124,7 @@ export default function Greetings() {
               )}
             </Dropzone>
           </div>
-        </div> */}
+        </div>
         <div className="flex items-end gap-2 font-bold justify-end ">
           <button
             onClick={handleSubmit}
@@ -146,7 +148,7 @@ export default function Greetings() {
 
 function MessageItem({ messageItem }: any) {
   const [active, setActive] = useState(false)
-  const noOfLike = 10
+
   return (
     <div className="flex flex-col gap-2 font-white border-b border-dashed rounded py-2 border-gray-700">
       <div className="w-full flex justify-between">
