@@ -28,7 +28,9 @@ class FirebaseConfig implements FirebaseConfigType {
   static instance: FirebaseConfig | null = null
 
   constructor() {
-    if (typeof navigator === "undefined") return
+    if (typeof navigator === "undefined" || typeof window === "undefined") {
+      return
+    }
     if (FirebaseConfig.instance) {
       return FirebaseConfig.instance
     }
