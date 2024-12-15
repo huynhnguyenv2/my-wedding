@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Hoàng ❤️ Nguyên",
-  description: "When two hearts become one",
+  description: "When two hearts become one ❤️",
 }
 export default function RootLayout({
   children,
@@ -35,7 +35,7 @@ export default function RootLayout({
         />
         <meta
           property="og:image"
-          content="https://my-wedding-gfz1.onrender.com/images/12.jpg"
+          content="https://my-wedding-gfz1.onrender.com/images/12.JPG"
         />
       </head>
       <body
