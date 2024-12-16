@@ -14,8 +14,8 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Hoàng ❤️ Nguyên",
-  description: "When two hearts become one ❤️",
+  title: "Hoàng ❤ Nguyên",
+  description: "When two hearts become one ❤",
 }
 export default function RootLayout({
   children,

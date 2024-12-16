@@ -1,9 +1,10 @@
 "use client"
 import Image from "next/image"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Modal from "react-modal"
 import useResizeListener from "../../hooks/useResizeListener"
-
+import Slider from "react-slick"
+import dynamic from "next/dynamic"
 const FILENAMES = [
   "1.JPG",
   "2.JPG",
@@ -44,10 +45,26 @@ function ImageZoomModal({
   closeModal: () => void
   alt: string
 }) {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    if (openSrc) {
+      setCurrentSlide(FILENAMES.indexOf(openSrc.split("/")[2]))
+    }
+  }, [openSrc])
+
   function handleClose() {
     closeModal()
   }
-
+  const setting = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // lazyLoad: "progressive" as const,
+    initialSlide: currentSlide,
+  }
   return (
     <Modal
       isOpen={!!openSrc}
@@ -57,14 +74,20 @@ function ImageZoomModal({
       ariaHideApp={false}
     >
       {openSrc && (
-        <div className="relative h-full">
-          <Image
-            src={openSrc}
-            alt={alt}
-            layout="fill"
-            loading="eager"
-            className="object-cover w-full h-full"
-          />
+        <div className="relative w-full">
+          <Slider {...setting}>
+            {FILENAMES.map((filename) => (
+              <div key={filename} className="relative w-full ">
+                <Image
+                  src={`/images/${filename}`}
+                  alt={alt}
+                  layout="fill"
+                  loading="eager"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            ))}
+          </Slider>
         </div>
       )}
 
@@ -100,7 +123,7 @@ export default function OurPhotos() {
   return (
     <section className="py-8">
       <div className="z-10">
-        <h1 className="text-3xl">Những bức hình xinh xẻo</h1>
+        <h1 className="text-3xl font-bold">Những bức hình xinh xẻo</h1>
         <div className=" px-4 sm:px-0">
           <div className="grid grid-cols-3 sm:grid-cols-4 mt-4 gap-4">
             {urls

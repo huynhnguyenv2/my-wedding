@@ -16,7 +16,7 @@ export default function Header() {
             className="rounded-full text-red-900"
           />
         </div>
-        <span className="text-2xl">&hearts;</span>
+        <span className="text-2xl">❤</span>
         <div className="">
           <Image
             src="/icons/queen.png"

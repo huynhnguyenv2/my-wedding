@@ -2,7 +2,7 @@ import Direction from "./Direction"
 
 export default function Registry() {
   return (
-    <section className="py-8 sm:px-20 flex flex-col gap-4 px-4 sm:px-0">
+    <section className="py-8 sm:px-40 flex flex-col gap-4 px-4 sm:px-0">
       <div className="">
         <h1 className="text-3xl">Our Story</h1>
       </div>

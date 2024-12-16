@@ -84,7 +84,7 @@ export default function Greetings() {
   }
 
   return (
-    <div className="py-8 px-4 sm:px-20 bg-gray-100 flex flex-col gap-4">
+    <div className="py-8 px-4 sm:px-40 bg-gray-100 flex flex-col gap-4">
       <h2 className="font-bold text-3xl">Gửi lời chúc phúc:</h2>
       <div className="flex flex-col gap-4 w-full sm:w-full ">
         <div className="flex flex-col sm:flex-row items-start gap-2 font-bold">
@@ -146,11 +146,17 @@ export default function Greetings() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border p-4 bg-main">
-        {messages.map((messageItem: any, index: number) => (
-          <div key={index}>
-            <MessageItem messageItem={messageItem} />
+        {messages.length > 0 ? (
+          messages.map((messageItem: any, index: number) => (
+            <div key={index}>
+              <MessageItem messageItem={messageItem} />
+            </div>
+          ))
+        ) : (
+          <div className="w-full flex justify-center col-span-2">
+            <p className="italic font-bold">No message yet</p>
           </div>
-        ))}
+        )}
       </div>
     </div>
   )

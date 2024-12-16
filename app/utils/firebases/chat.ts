@@ -14,6 +14,7 @@ import {
   increment,
   DocumentData,
   DocumentReference,
+  where,
 } from "firebase/firestore"
 
 interface INewMessage {
@@ -62,14 +63,12 @@ class ChatService implements ChatServiceType {
     if (this.db === undefined) return {}
     const messagesDoc = collection(this.db, "messages")
 
-    const messagesQuery = lastMsgIndex
-      ? query(
-          messagesDoc,
-          orderBy("createdAt", "desc"),
-          startAfter(lastMsgIndex),
-          limit(PAGE_SIZE)
-        )
-      : query(messagesDoc, orderBy("createdAt", "desc"), limit(PAGE_SIZE))
+    const messagesQuery = query(
+      messagesDoc,
+      where("reviewed", "==", true),
+      orderBy("createdAt", "desc"),
+      limit(PAGE_SIZE)
+    )
 
     return { messagesQuery, onSnapshot }
   }

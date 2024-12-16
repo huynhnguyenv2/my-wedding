@@ -9,6 +9,7 @@ import DefaultPopup from "../../core/components/DefaultPopup"
 import Direction from "../../core/components/Direction"
 import Snowfall from "react-snowfall"
 import Reception from "../components/Reception"
+import Menu from "../components/Menu"
 function Footer() {
   return (
     <footer className="flex justify-center items-center bg-[#f5f5f5] p-4 text-center">
@@ -31,23 +32,23 @@ export default function Home() {
       <Snowfall
         snowflakeCount={500}
         style={{ zIndex: 9999 }}
-        // speed={[3, 3]}
+        speed={[3, 3]}
         changeFrequency={10}
       />
 
       <Header />
-      <div className=" sm:px-20">
+      <div className="sm:px-40">
         <Introduce />
       </div>
-      <Reception />
+
       <Registry />
-      <div className=" sm:px-20">
+      <Reception />
+      <div className="sm:px-40">
         <OurPhotos />
       </div>
-      {/* <div className=" sm:px-20">
-        <Direction />
-      </div> */}
+      <Menu />
       <Greetings />
+
       <Footer />
       <DefaultPopup />
     </div>
