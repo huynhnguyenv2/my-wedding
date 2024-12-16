@@ -28,10 +28,11 @@ export default function DefaultPopup() {
           borderRadius: "0.5rem",
           maxWidth: "40rem",
           width: "100%",
+          maxHeight: "100dvh",
         },
       }}
     >
-      <div className="text-xl bg-main p-4">
+      <div className="text-xl bg-main p-4 ">
         <h2 className="text-2xl font-bold text-center mb-2">Lời Cảm Ơn</h2>
         <p className="">
           Hôm nay là một ngày vô cùng đặc biệt đối với 2 vợ chồng con/em – ngày
