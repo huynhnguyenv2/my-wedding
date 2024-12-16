@@ -115,10 +115,14 @@ function ImageZoomModal({
   )
 }
 export default function OurPhotos() {
+  const [loadMorePage, setLoadMore] = useState<number>(0)
   const [openSrc, setOpenSrc] = useState<string | null>(null)
   const urls = FILENAMES.map((filename) => `/images/${filename}`)
 
   const { mobileView } = useResizeListener({})
+  function handleLoadMore(page: number) {
+    setLoadMore(page)
+  }
 
   return (
     <section className="py-8">
@@ -147,66 +151,62 @@ export default function OurPhotos() {
                 </div>
               ))}
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 mt-4 gap-4">
-            {urls
-              .slice(mobileView ? 3 : 4, mobileView ? 5 : 7)
-              .map((url: string, index: number) => (
-                <div
-                  key={index}
-                  className="relative flex justify-center items-center cursor-pointer col-span-1"
-                  onClick={() => setOpenSrc(url)}
-                >
-                  <Image
-                    src={url}
-                    width={200}
-                    height={200}
-                    alt="An image"
-                    className=" w-full h-80 object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-          </div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 mt-4 gap-4">
-            {urls
-              .slice(mobileView ? 5 : 7, mobileView ? 8 : 11)
-              .map((url: string, index: number) => (
-                <div
-                  key={index}
-                  className="relative flex justify-center items-center cursor-pointer col-span-1"
-                  onClick={() => setOpenSrc(url)}
-                >
-                  <Image
-                    src={url}
-                    width={200}
-                    height={200}
-                    alt="An image"
-                    className=" w-full h-80 object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-          </div>
-          {/* <div className="grid grid-cols-2 sm:grid-cols-3 mt-4 gap-4">
-            {urls
-              .slice(mobileView ? 3 : 4, mobileView ? 5 : 7)
-              .map((url: string, index: number) => (
-                <div
-                  key={index}
-                  className="relative flex justify-center items-center cursor-pointer col-span-1"
-                  onClick={() => setOpenSrc(url)}
-                >
-                  <Image
-                    src={url}
-                    width={200}
-                    height={200}
-                    alt="An image"
-                    className=" w-full h-80 object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-          </div> */}
+          {loadMorePage !== 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 mt-4 gap-4">
+              {urls
+                .slice(mobileView ? 3 : 4, mobileView ? 5 : 7)
+                .map((url: string, index: number) => (
+                  <div
+                    key={index}
+                    className="relative flex justify-center items-center cursor-pointer col-span-1"
+                    onClick={() => setOpenSrc(url)}
+                  >
+                    <Image
+                      src={url}
+                      width={200}
+                      height={200}
+                      alt="An image"
+                      className=" w-full h-80 object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+            </div>
+          )}
+          {loadMorePage === 2 && (
+            <div className="grid grid-cols-3 sm:grid-cols-4 mt-4 gap-4">
+              {urls
+                .slice(mobileView ? 5 : 7, mobileView ? 8 : 11)
+                .map((url: string, index: number) => (
+                  <div
+                    key={index}
+                    className="relative flex justify-center items-center cursor-pointer col-span-1"
+                    onClick={() => setOpenSrc(url)}
+                  >
+                    <Image
+                      src={url}
+                      width={200}
+                      height={200}
+                      alt="An image"
+                      className=" w-full h-80 object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+            </div>
+          )}
+          {loadMorePage !== 2 && (
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={() => {
+                  handleLoadMore(loadMorePage + 1)
+                }}
+                className="bg-main px-4 py-2 rounded-lg text-lg hover:font-bold"
+              >
+                Xem thêm
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <div className="z-90">
