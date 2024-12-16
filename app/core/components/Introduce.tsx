@@ -24,19 +24,18 @@ export default function Introduce() {
 
   const { daysToEvent, wifeDateText } = state
   return (
-    <section className="flex justify-center relative h-[100vh]">
-      <Image
-        src="/images/12.JPG"
-        layout="fill"
-        objectFit="cover"
-        alt="An image"
-        fill
-        style={{ objectFit: "cover" }}
-        className="absolute z-0  "
-        loading="eager"
-      />
-
-      <div className="flex flex-col justify-end text-center z-10 font-bold text-red-900 opacity-90 mb-20">
+    <section className="flex justify-center relative ">
+      <div className="relative w-full h-auto flex flex-col">
+        <Image
+          src="/images/12.JPG"
+          width={1920}
+          height={1080}
+          alt="An image"
+          className="z-0 object-cover w-full h-auto sm:h-[90vh]"
+          loading="eager"
+        />
+      </div>
+      <div className="absolute bottom-0 flex flex-col justify-end text-center z-10 font-bold text-red-900 opacity-90 mb-20 sm:mb-80">
         <h1 className="text-3xl sm:text-4xl mb-2 ">
           {daysToEvent > 0
             ? `${daysToEvent} DAYS TO THE EVENT`

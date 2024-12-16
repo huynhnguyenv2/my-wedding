@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import Modal from "react-modal"
 
 export default function DefaultPopup() {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   function handleClose() {
     setIsOpen(false)
   }
