@@ -5,7 +5,7 @@ export default function Reception() {
       <div className="w-full gap-16 sm:gap-4 grid grid-cols-1 sm:grid-cols-2">
         <div className="w-full flex flex-col gap-4 col-span-1 px-4 sm:px-0">
           <div className="">
-            <h1 className="text-3xl">Lời tỏ tình</h1>
+            <h1 className="text-3xl font-bold">Lời tỏ tình</h1>
           </div>
           <div className="text-center flex flex-col justify-center h-full gap-4 col-span-1">
             <p className="w-1/2 mx-auto my-8">

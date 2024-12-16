@@ -123,7 +123,9 @@ export default function OurPhotos() {
   return (
     <section className="py-8">
       <div className="z-10">
-        <h1 className="text-3xl font-bold">Những bức hình xinh xẻo</h1>
+        <h1 className="text-3xl font-bold px-4 sm:px-0">
+          Những bức hình xinh xẻo
+        </h1>
         <div className=" px-4 sm:px-0">
           <div className="grid grid-cols-3 sm:grid-cols-4 mt-4 gap-4">
             {urls
