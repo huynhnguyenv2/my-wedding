@@ -145,7 +145,7 @@ export default function OurPhotos() {
                     width={200}
                     height={200}
                     alt="An image"
-                    className=" w-full h-80 object-cover"
+                    className=" w-full object-cover"
                     loading="lazy"
                   />
                 </div>
@@ -166,7 +166,7 @@ export default function OurPhotos() {
                       width={200}
                       height={200}
                       alt="An image"
-                      className=" w-full h-80 object-cover"
+                      className=" w-full object-cover"
                       loading="lazy"
                     />
                   </div>
@@ -188,7 +188,7 @@ export default function OurPhotos() {
                       width={200}
                       height={200}
                       alt="An image"
-                      className=" w-full h-80 object-cover"
+                      className=" w-full object-cover"
                       loading="lazy"
                     />
                   </div>
