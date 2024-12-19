@@ -30,8 +30,8 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     padding: 0,
     border: "none",
-    width: "90%",
-    height: "90%",
+    // width: "90%",
+    // height: "90%",
     zIndex: 1000,
   },
 }
@@ -58,7 +58,8 @@ function ImageZoomModal({
   }
   const setting = {
     dots: false,
-    infinite: true,
+    // infinite: true,
+    dotsClass: "slick-dots slick-thumb",
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -74,20 +75,21 @@ function ImageZoomModal({
       ariaHideApp={false}
     >
       {openSrc && (
-        <div className="relative w-full">
-          <Slider {...setting}>
-            {FILENAMES.map((filename) => (
-              <div key={filename} className="relative w-full ">
-                <Image
-                  src={`/images/${filename}`}
-                  alt={alt}
-                  layout="fill"
-                  loading="eager"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-            ))}
-          </Slider>
+        <div className=" w-full">
+          <div className="overflow-hidden w-[400px] sm:w-[800px] h-auto relative p-4 ">
+            <Slider {...setting}>
+              {FILENAMES.map((filename) => (
+                <div key={filename} className="relative w-full h-[60vh]">
+                  <img
+                    src={`/images/${filename}`}
+                    alt={alt}
+                    className="object-cover w-full h-full"
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              ))}
+            </Slider>
+          </div>
         </div>
       )}
 

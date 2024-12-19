@@ -28,7 +28,17 @@ export default function RootLayout({
         <link rel="icon" href="static/favicon.ico" />
         <meta property="og:title" content={String(metadata.title) || ""} />
         <meta property="og:description" content={metadata.description || ""} />
-
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
         <meta
           property="og:url"
           content="https://my-wedding-gfz1.onrender.com/"
