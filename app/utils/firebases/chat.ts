@@ -66,7 +66,6 @@ class ChatService implements ChatServiceType {
     const messagesQuery = query(
       messagesDoc,
       where("reviewed", "==", true),
-      where("name", "!=", ""),
       orderBy("createdAt", "desc"),
       limit(PAGE_SIZE)
     )
