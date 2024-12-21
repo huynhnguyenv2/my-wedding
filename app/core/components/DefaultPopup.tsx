@@ -27,8 +27,8 @@ export default function DefaultPopup() {
           padding: "1rem",
           borderRadius: "0.5rem",
           maxWidth: "40rem",
-          width: "100%",
-          maxHeight: "96dvh",
+          width: "96%",
+          maxHeight: "calc(100vh - 8rem)",
         },
       }}
     >
@@ -72,6 +72,16 @@ export default function DefaultPopup() {
         alt="An image"
         className="mx-auto mb-4"
       />
+      <div className="flex justify-end gap-4">
+        <button
+          onClick={handleClose}
+          className="hover:text-gray-500 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150  rounded-md underline text-black"
+          aria-label="Close"
+        >
+          Close
+        </button>
+      </div>
+      {/* 
       <button
         onClick={handleClose}
         className="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150 absolute top-0 right-0 p-2"
@@ -91,7 +101,7 @@ export default function DefaultPopup() {
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-      </button>
+      </button> */}
     </Modal>
   )
 }

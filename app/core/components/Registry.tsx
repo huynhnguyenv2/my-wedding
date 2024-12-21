@@ -1,5 +1,5 @@
 import Direction from "./Direction"
-
+import Image from "next/image"
 export default function Registry() {
   return (
     <>
@@ -38,6 +38,17 @@ export default function Registry() {
             được chọn “người nhà”, nên là, trộm vía bây giờ và hi vọng cả sau
             này, chúng mình thật sự hạnh phúc khi trở thành người nhà của nhau.
           </p>
+        </div>
+        <div className="w-full grid grid-cols-2 gap-4">
+          <div className="gap-4 col-span-2">
+            <Image
+              src="/images/4.jpg"
+              width={400}
+              height={400}
+              alt="An image"
+              className=""
+            />
+          </div>
         </div>
       </section>
     </>

@@ -8,7 +8,6 @@ import dynamic from "next/dynamic"
 const FILENAMES = [
   "2.JPG",
   "14.jpg",
-  "4.jpg",
   "16.jpg",
   "17.jpg",
   "18.jpg",
@@ -33,6 +32,7 @@ const FILENAMES = [
   "10.jpg",
   "11.JPG",
   "12.JPG",
+  "4.jpg",
 ]
 
 const customStyles = {

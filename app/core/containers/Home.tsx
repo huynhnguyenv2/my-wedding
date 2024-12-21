@@ -33,7 +33,7 @@ export default function Home() {
       />
 
       <Header />
-      <div className="sm:px-40">
+      <div className="sm:px-40 pb-8">
         <Introduce />
       </div>
       <Registry />
