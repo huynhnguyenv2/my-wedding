@@ -14,7 +14,7 @@ function Footer() {
     <footer className="flex justify-center items-center bg-[#f5f5f5] p-4 text-center">
       <p>
         Made with lots of <span>❤️</span> by{" "}
-        <a href="mailto:hoangphamkhanh97@gmail.com">
+        <a href="https://www.facebook.com/hoang.phamkhanh.71/">
           <b>chong be Nguyen</b>
         </a>
         .
