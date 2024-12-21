@@ -89,7 +89,7 @@ export default function Greetings() {
       <div className="flex flex-col gap-4 w-full sm:w-full ">
         <div className="flex flex-col sm:flex-row items-start gap-2 font-bold">
           <label htmlFor="name" className="w-40">
-            Tên or Biệt danh
+            Tên hoặc Nickname
           </label>
           <input
             type="text"
