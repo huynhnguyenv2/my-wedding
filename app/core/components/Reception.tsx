@@ -22,7 +22,7 @@ export default function Reception() {
               <p className="text-md">*Lời kể từ dợ Neil*</p>
               {/* gất sến 🙂 but thật lòng */}
             </p>
-            {/* <p>
+            <p>
               Hôm đó anh thật sự rất hồi hộp và bối rối, anh đã lên kế hoạch từ
               lâu nhưng khi đến ngày thì anh vẫn cảm thấy rất căng thẳng. Anh
               nhớ lúc đó, tay anh run run, giọng anh nghẹn lại, mặt anh đỏ cả
@@ -30,12 +30,12 @@ export default function Reception() {
               muốn dành cả cuộc đời còn lại bên em." Câu hỏi thì đơn giản thôi,
               nhưng anh nghĩ, đó là khoảnh khắc quan trọng nhất trong cuộc đời
               anh. <br />
-              Cảm ơn em vì đã nói said "YES", và cảm ơn em vì đã yêu anh. Anh
-              chỉ mong rằng, dù có thế nào, chúng ta sẽ cùng nhau đi qua hết
-              những khoảnh khắc vui buồn trong cuộc sống này, và anh sẽ luôn là
-              người sẵn sàng ở bên em, dù lúc vui hay lúc khó khăn.
+              Cảm ơn em vì đã said "YES", và cảm ơn em vì đã yêu anh. Anh chỉ
+              mong rằng, dù có thế nào, chúng ta sẽ cùng nhau đi qua hết những
+              khoảnh khắc vui buồn trong cuộc sống này, và anh sẽ luôn là người
+              sẵn sàng ở bên em, dù lúc vui hay lúc khó khăn.
               <p className="text-md">*Lời kể từ chồng bé Nguyên*</p>
-            </p> */}
+            </p>
           </div>
         </div>
         <div className="w-full grid grid-cols-2 gap-4">
