@@ -22,7 +22,7 @@ interface INewMessage {
   message: string
 }
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 99
 interface ChatServiceType {
   createMessage: (message: INewMessage) => void
   getMessages: (
