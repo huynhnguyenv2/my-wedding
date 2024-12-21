@@ -37,7 +37,7 @@ export default function Registry() {
               />
             </div>
           </div>
-          <div className="flex w-full gap-4">
+          <div className="flex w-full gap-4  text-lg">
             <p>
               Triệu hạt mưa rơi, không hạt nào rơi nhầm chỗ. Những người ta gặp,
               không người nào là ngẫu nhiên! Găp được nhau và yêu nhau ở thời

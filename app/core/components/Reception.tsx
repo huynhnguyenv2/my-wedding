@@ -7,7 +7,7 @@ export default function Reception() {
           <div className="">
             <h1 className="text-3xl font-bold">Lời cầu hôn</h1>
           </div>
-          <div className=" flex flex-col h-full gap-4 col-span-1">
+          <div className=" flex flex-col h-full gap-4 col-span-1 text-lg">
             <p className="text-md my-4">
               Nhận được lời cầu hôn vào một ngày đẹp trời dưới sự chứng kiến của
               má Chi tại Sài Gòn, hơn hẳn những câu nói ngôn tình em từng mong
