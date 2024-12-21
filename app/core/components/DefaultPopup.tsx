@@ -28,7 +28,7 @@ export default function DefaultPopup() {
           borderRadius: "0.5rem",
           maxWidth: "40rem",
           width: "100%",
-          maxHeight: "100dvh",
+          maxHeight: "96dvh",
         },
       }}
     >
