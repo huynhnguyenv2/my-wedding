@@ -63,6 +63,7 @@ export default function Greetings() {
   }, [])
 
   function handleSubmit() {
+    if (!messageContent) return
     if (chatServiceRef.current) {
       chatServiceRef.current.createMessage({ message: messageContent, name })
     }

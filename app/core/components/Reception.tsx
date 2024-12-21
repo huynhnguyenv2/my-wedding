@@ -19,7 +19,7 @@ export default function Reception() {
               yêu nó "chill" như đúng người đúng thời điểm vậy, rất hân hạnh trở
               thành "cuộc đời" nhau! Biết ơn vì cuộc đời sau này luôn có anh,
               yêu &hearts; <br />
-              <p className="text-md">*Lời kể từ dợ Neil*</p>
+              <span className="text-md">*Lời kể từ dợ Neil*</span>
               {/* gất sến 🙂 but thật lòng */}
             </p>
             <p>
@@ -34,7 +34,8 @@ export default function Reception() {
               mong rằng, dù có thế nào, chúng ta sẽ cùng nhau đi qua hết những
               khoảnh khắc vui buồn trong cuộc sống này, và anh sẽ luôn là người
               sẵn sàng ở bên em, dù lúc vui hay lúc khó khăn.
-              <p className="text-md">*Lời kể từ chồng bé Nguyên*</p>
+              <br />
+              <span className="text-md">*Lời kể từ chồng bé Nguyên*</span>
             </p>
           </div>
         </div>
