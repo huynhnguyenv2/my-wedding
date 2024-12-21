@@ -6,6 +6,21 @@ import useResizeListener from "../../hooks/useResizeListener"
 import Slider from "react-slick"
 import dynamic from "next/dynamic"
 const FILENAMES = [
+  "2.JPG",
+  "14.jpg",
+  "4.jpg",
+  "16.jpg",
+  "17.jpg",
+  "18.jpg",
+  "19.jpg",
+  "20.jpg",
+  "21.jpg",
+  "22.jpg",
+  "23.jpg",
+  "24.jpg",
+  "25.jpg",
+  "26.jpg",
+  "27.jpg",
   "1.JPG",
   "2.JPG",
   "3.JPG",

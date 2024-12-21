@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react"
 import Modal from "react-modal"
-
+import Image from "next/image"
 export default function DefaultPopup() {
   const [isOpen, setIsOpen] = useState(true)
   function handleClose() {
@@ -24,7 +24,7 @@ export default function DefaultPopup() {
           bottom: "auto",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
-          padding: "2rem",
+          padding: "1rem",
           borderRadius: "0.5rem",
           maxWidth: "40rem",
           width: "100%",
@@ -63,8 +63,15 @@ export default function DefaultPopup() {
           Một lần nữa, xin chân thành cảm ơn và chúc tất cả mọi người sức khỏe,
           hạnh phúc và thành công trong cuộc sống!
         </p>
-        <p className="text-right font-bold">Huy Hoàng & Phương Nguyên</p>
+        <p className="text-right font-bold my-2">Huy Hoàng & Phương Nguyên</p>
       </div>
+      <Image
+        src="/images/family.jpg"
+        width={600}
+        height={100}
+        alt="An image"
+        className="mx-auto mb-4"
+      />
       <button
         onClick={handleClose}
         className="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150 absolute top-0 right-0"
