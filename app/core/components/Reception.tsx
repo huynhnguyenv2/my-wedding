@@ -22,7 +22,7 @@ export default function Reception() {
               <p className="text-md">*Lời kể từ dợ Neil*</p>
               {/* gất sến 🙂 but thật lòng */}
             </p>
-            <p>
+            {/* <p>
               Hôm đó anh thật sự rất hồi hộp và bối rối, anh đã lên kế hoạch từ
               lâu nhưng khi đến ngày thì anh vẫn cảm thấy rất căng thẳng. Anh
               nhớ lúc đó, tay anh run run, giọng anh nghẹn lại, mặt anh đỏ cả
@@ -35,7 +35,7 @@ export default function Reception() {
               những khoảnh khắc vui buồn trong cuộc sống này, và anh sẽ luôn là
               người sẵn sàng ở bên em, dù lúc vui hay lúc khó khăn.
               <p className="text-md">*Lời kể từ chồng bé Nguyên*</p>
-            </p>
+            </p> */}
           </div>
         </div>
         <div className="w-full grid grid-cols-2 gap-4">
