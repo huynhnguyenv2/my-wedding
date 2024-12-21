@@ -12,7 +12,7 @@ export default function Registry() {
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/zDudqXvHz_0"
+            src="https://www.youtube.com/watch?v=lH8JB72JMOI"
             title="YouTube video player"
             frameBorder={0}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
