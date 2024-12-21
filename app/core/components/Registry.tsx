@@ -17,7 +17,7 @@ export default function Registry() {
             frameBorder={0}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            className="w-full h-[40dvh]"
+            className="w-full h-[40dvh] sm:h-[80dvh]"
           ></iframe>
         </div>
       </section>

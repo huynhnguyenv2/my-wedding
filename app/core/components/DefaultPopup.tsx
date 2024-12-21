@@ -81,7 +81,7 @@ export default function DefaultPopup() {
           Close
         </button>
       </div>
-      {/* 
+
       <button
         onClick={handleClose}
         className="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150 absolute top-0 right-0 p-2"
@@ -101,7 +101,7 @@ export default function DefaultPopup() {
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-      </button> */}
+      </button>
     </Modal>
   )
 }
