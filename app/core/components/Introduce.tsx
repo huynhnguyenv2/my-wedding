@@ -9,7 +9,7 @@ export default function Introduce() {
   })
 
   useEffect(() => {
-    const wifeDate = new Date("2024-12-22")
+    const wifeDate = new Date("2025-1-5")
     const now = new Date()
     const diff = Math.ceil(
       (wifeDate.getTime() - now.getTime()) / (1000 * 3600 * 24)
