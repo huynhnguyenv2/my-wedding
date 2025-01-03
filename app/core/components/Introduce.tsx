@@ -44,7 +44,7 @@ export default function Introduce() {
         <h2 className="font-whisper text-[42px] sm:text-[92px] mb-2">
           We&apos;re getting married
         </h2>
-        <p className="text-2xl text-3xl mb-2">{wifeDateText}</p>
+        <p className="text-2xl text-3xl mb-2">January 5, 2025</p>
       </div>
     </section>
   )
